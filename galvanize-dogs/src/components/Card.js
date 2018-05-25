@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
 
-class App extends Component {
+class Card extends Component {
     render() {
         return (
-         
+            <p>card</p>
         );
     }
 }
