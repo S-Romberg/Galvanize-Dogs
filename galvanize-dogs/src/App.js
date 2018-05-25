@@ -90,7 +90,7 @@ class App extends Component {
       :
       <div>
         <Header /> 
-        <DogCard handleDelete={this.handleDelete} data={this.state.data}/> 
+        <DogCard data={this.state.data}/> 
        </div> 
        }
       </div>
