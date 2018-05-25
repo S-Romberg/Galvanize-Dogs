@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header'
 import Create from './components/Create'
-import Card from './components/Card'
+import DogCard from './components/DogCard'
 
 const dogURL = 'https://dogs-rating-api.herokuapp.com/dogs'
 
@@ -50,7 +50,7 @@ class App extends Component {
       :
       <div>
         <Header /> 
-        <Card data={this.state.data}/> 
+        <DogCard data={this.state.data}/> 
        </div> 
        }
       </div>
