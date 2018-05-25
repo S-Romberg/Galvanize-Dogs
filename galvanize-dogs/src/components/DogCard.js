@@ -22,6 +22,7 @@ class DogCard extends Component {
             <Card.Content extra>
                 <p>{dog.rating}/10 </p>
                 <button onClick={this.props.upVote}></button>
+                <button onClick={this.props.handDelete}>Delete</button>
             </Card.Content>
         </Card>
         )

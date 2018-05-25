@@ -13,7 +13,6 @@ class App extends Component {
     super(props)
     this.state = {
       data: [],
-      isClicked: true,
       dogName: '',
       comment: '',
       imgURL: '',
@@ -73,6 +72,7 @@ class App extends Component {
 
     handleDelete = (event) => {
       event.preventDefault()
+      console.log('clicked')
       alert("ARE YOU SURE ")
 
     }
@@ -83,14 +83,9 @@ class App extends Component {
     var isClicked = this.state.isClicked
     return (
       <div className="App">
-       {isClicked ? 
-       <Create handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>  
-      :
-      <div>
+        <Create handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>  
         <Header /> 
-        <DogCard upVote={this.upVote} data={this.state.data}/> 
-       </div> 
-       }
+        <DogCard handleDelete={this.handleDelete} upVote={this.upVote} data={this.state.data}/> 
       </div>
     );
   }
