@@ -21,6 +21,7 @@ class App extends Component {
     }
   }
 
+
   componentDidMount(){
     fetch(dogURL)
       .then(response => response.json())
@@ -86,8 +87,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Create handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>  
         <Header /> 
+        <Create  handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>  
         <DogCard handleDelete={this.handleDelete} upVote={this.upVote} data={this.state.data}/> 
       </div>
     );
