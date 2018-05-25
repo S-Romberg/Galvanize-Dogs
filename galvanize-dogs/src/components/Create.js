@@ -5,7 +5,7 @@ class Create extends Component {
 
     render() {
         return (
-        <form onSubmit={this.props.handleSubmit}>
+        <form id='form' onSubmit={this.props.handleSubmit}>
             <label>
               Name
               <input name='dogName' type="text" value={this.props.dogName} onChange={this.props.handleChange} />

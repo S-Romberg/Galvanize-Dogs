@@ -19,32 +19,30 @@ class App extends Component {
       imgURL: '',
       rating: 10
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount(){
     fetch(dogURL)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        console.log('data: ',data)
         this.setState({
-          data: data,
+          data: data.dogs,
         })
       })
     }
     
-    componentDidUpdate(){
-      fetch(dogURL)
-        .then(response => response.json())
-        .then(data => {
-          this.setState({
-            data: data,
-          })
-        })
-      }
+    // componentDidUpdate(){
+    //   fetch(dogURL)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       this.setState({
+    //         data: data,
+    //       })
+    //     })
+    //   }
 
-    handleSubmit(event){
+    handleSubmit = (event) => {
       event.preventDefault()
       fetch(dogURL, {
         method: "POST",
@@ -60,14 +58,12 @@ class App extends Component {
       .then(entry => {
        console.log(entry)
       })
-      .then(this.setState({
-        dogName: '',
-        comment: '',
-        imgURL: ''
-      }))
+      .then(
+        document.getElementById('form').reset()
+      )
     }
 
-    handleChange(event){
+    handleChange = (event) => {
       const value = event.target.value
       const key = event.target.name
       this.setState({
@@ -75,12 +71,14 @@ class App extends Component {
       })
     }
 
-    handleDelete(event){
+    handleDelete = (event) => {
       event.preventDefault()
       alert("ARE YOU SURE ")
 
     }
-
+    upVote = (event) => {
+      console.log('yeah')
+    }
   render() {
     var isClicked = this.state.isClicked
     return (
@@ -90,7 +88,7 @@ class App extends Component {
       :
       <div>
         <Header /> 
-        <DogCard data={this.state.data}/> 
+        <DogCard upVote={this.upVote} data={this.state.data}/> 
        </div> 
        }
       </div>
