@@ -4,58 +4,37 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 
 
 class DogCard extends Component {
-    render() {
+
+    render() {    
+       console.log(this.props.data) 
+        var dogs = this.props.data.map(dog => {
         return (
+        <Card key={dog.id}>
+            <Image src={dog.imgURL} />
+            <Card.Content>
+                <Card.Header>
+                    {dog.dogName}
+                </Card.Header>
+                <Card.Description>
+                    {dog.comment}
+                </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+                <p>{dog.rating}/10 </p>
+                <button onClick={this.props.upVote}></button>
+            </Card.Content>
+        </Card>
+        )
+        })
+        
+    
+    return (
             <div>
-            <Card>
-                <Image src='/assets/images/avatar/large/matthew.png' />
-                <Card.Content>
-                    <Card.Header>
-                        Matthew
-      </Card.Header>
-                    <Card.Meta>
-                        <span className='date'>
-                            Joined in 2015
-        </span>
-                    </Card.Meta>
-                    <Card.Description>
-                        Matthew is a musician living in Nashville.
-      </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-      </a>
-                </Card.Content>
-            </Card>
-                <Card>
-                    <Image src='/assets/images/avatar/large/matthew.png' />
-                    <Card.Content>
-                        <Card.Header>
-                            Matthew
-      </Card.Header>
-                        <Card.Meta>
-                            <span className='date'>
-                                Joined in 2015
-        </span>
-                        </Card.Meta>
-                        <Card.Description>
-                            Matthew is a musician living in Nashville.
-      </Card.Description>
-                    </Card.Content>
-                    <Card.Content extra>
-                        <a>
-                            <Icon name='user' />
-                            22 Friends
-      </a>
-                    </Card.Content>
-                </Card>
+                {dogs}
             </div>
+        )
+    }
+    }
 
 
-
-
-
-
-export default DogCard;
+export default DogCard
