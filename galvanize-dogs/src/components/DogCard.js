@@ -19,9 +19,11 @@ class DogCard extends Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <p>{dog.rating}/10 </p>
-                <button onClick={this.props.upVote}></button>
-                <button name = {dog.id} onClick={this.props.handleDelete}>Delete</button>
+                <div className='upVote'>
+                    <p>{dog.rating}/10 </p>
+                    <button value={dog.rating} name={dog.id} onClick={this.props.upVote}>&uarr; vote</button>
+                </div>
+                <button  name = {dog.id} onClick={this.props.handleDelete}>Delete</button>
             </Card.Content>
         </Card>
         )
@@ -29,7 +31,7 @@ class DogCard extends Component {
         
     
     return (
-            <div>
+            <div className='dogContainer'>
                 {dogs}
             </div>
         )

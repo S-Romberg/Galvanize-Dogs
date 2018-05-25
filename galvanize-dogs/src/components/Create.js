@@ -20,7 +20,7 @@ class Create extends Component {
             >
                 <Modal.Actions>
                     <h3>Add a Good Doggo</h3>
-                    <form id='form' onSubmit={this.props.handleSubmit, this.handleClose}>
+                    <form id='form' onSubmit={this.props.handleSubmit}>
                             <label>
 
                             <Input name='dogName' placeholder='Dog Name' type="text" value={this.props.dogName} onChange={this.props.handleChange} />

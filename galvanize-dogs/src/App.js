@@ -81,7 +81,17 @@ class App extends Component {
     }
     
     upVote = (event) => {
-      console.log('yeah')
+      console.log(event.target.value)
+      let newRating = event.target.value++
+      event.preventDefault()
+      let updateURL = dogURL + event.target.name
+      fetch(updateURL, {
+        method: "PUT",
+        headers: new Headers({"content-type": "application/json"}),
+        body: JSON.stringify({
+          rating: newRating
+        })
+      })
     }
   
   render() {
