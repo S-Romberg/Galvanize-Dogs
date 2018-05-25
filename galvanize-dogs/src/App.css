@@ -5,9 +5,24 @@
 header {
   display: flex;
   justify-content: center;
+  background-color: white;
 }
 .dogContainer {
   display: flex;
+flex-direction: column;
+align-items: center;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url('./background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 
-  
+}
+.ui.button {
+  background-color: navy;
+ color: white;
 }
