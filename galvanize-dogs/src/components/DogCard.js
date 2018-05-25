@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 
 
 class DogCard extends Component {
 
     render() {    
-       console.log(this.props.data) 
         var dogs = this.props.data.map(dog => {
         return (
         <Card key={dog.id}>
@@ -22,7 +21,7 @@ class DogCard extends Component {
             <Card.Content extra>
                 <p>{dog.rating}/10 </p>
                 <button onClick={this.props.upVote}></button>
-                <button onClick={this.props.handDelete}>Delete</button>
+                <button name = {dog.id} onClick={this.props.handleDelete}>Delete</button>
             </Card.Content>
         </Card>
         )
@@ -35,7 +34,7 @@ class DogCard extends Component {
             </div>
         )
     }
-    }
+}
 
 
 export default DogCard

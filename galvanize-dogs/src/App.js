@@ -4,7 +4,7 @@ import Header from './components/Header'
 import Create from './components/Create'
 import DogCard from './components/DogCard'
 
-const dogURL = 'https://dogs-rating-api.herokuapp.com/dogs'
+const dogURL = 'https://dogs-rating-api.herokuapp.com/dogs/'
 
 
 class App extends Component {
@@ -16,30 +16,28 @@ class App extends Component {
       dogName: '',
       comment: '',
       imgURL: '',
-      rating: 10
+      rating: 10,
+      updateFeed: false
     }
   }
 
   componentDidMount(){
     fetch(dogURL)
       .then(response => response.json())
-      .then(data => {
-        console.log('data: ',data)
+      .then(data => 
         this.setState({
           data: data.dogs,
         })
-      })
+      )
     }
-    
-    // componentDidUpdate(){
-    //   fetch(dogURL)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       this.setState({
-    //         data: data,
-    //       })
-    //     })
-    //   }
+
+    componentDidUpdate() {
+      fetch(dogURL)
+        .then(res => res.json())
+        .then(data =>
+          this.setState({data: data.dogs})
+        )
+    }
 
     handleSubmit = (event) => {
       event.preventDefault()
@@ -55,7 +53,7 @@ class App extends Component {
       })
       .then(response => response.json())
       .then(entry => {
-       console.log(entry)
+        console.log(entry)
       })
       .then(
         document.getElementById('form').reset()
@@ -73,14 +71,19 @@ class App extends Component {
     handleDelete = (event) => {
       event.preventDefault()
       console.log('clicked')
-      alert("ARE YOU SURE ")
-
+      alert("YOU MONSTER")
+      let deleteURL = dogURL + event.target.name
+      fetch(deleteURL, {
+        method: "DELETE",
+        headers: new Headers({"content-type": "application/json"})
+      })
     }
+    
     upVote = (event) => {
       console.log('yeah')
     }
+  
   render() {
-    var isClicked = this.state.isClicked
     return (
       <div className="App">
         <Create handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>  
