@@ -3,8 +3,9 @@ import React, {Component} from 'react';
 
 class Card extends Component {
     render() {
+        var dogs = this.props.data.map()
         return (
-            <p>card</p>
+            <button onClick={this.props.handleDelete}>Delete</button>
         );
     }
 }

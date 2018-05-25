@@ -2,20 +2,21 @@ import React, {Component} from 'react';
 
 
 class Create extends Component {
+
     render() {
         return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.handleSubmit}>
             <label>
               Name
-              <input type="text" value={this.props.dogName} onChange={this.handleChange} />
+              <input name='dogName' type="text" value={this.props.dogName} onChange={this.props.handleChange} />
             </label>
             <label>
               Comment
-              <input type="text" value={this.props.comment} onChange={this.handleChange} />
+              <input name='comment' type="text" value={this.props.comment} onChange={this.props.handleChange} />
             </label>
             <label>
               Picture (link)
-              <input type="text" value={this.props.picture} onChange={this.handleChange} />
+              <input name='imgURL' type="text" value={this.props.imgURL} onChange={this.props.handleChange} />
             </label>
             <input type="submit" value="Submit" />
           </form>
