@@ -4,6 +4,8 @@ import Header from './components/Header'
 import Create from './components/Create'
 import Card from './components/Card'
 
+const dogURL = 'https://dogs-rating-api.herokuapp.com/dogs'
+
 
 class App extends Component {
 
@@ -12,25 +14,31 @@ class App extends Component {
     this.state = {
       data: [],
       isClicked: false,
+      dogName: '',
+      comment: '',
+      image: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount(){
-    // fetch(houseURL)
-    //   .then(response => response.json())
-    //   .then(data => {
+    fetch(dogURL)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        this.setState({
+          data: data,
+        })
+      })
+    }
 
-    //     this.setState({
-    //       data: data,
-    //       isLoaded: true,
-    //       house: '',
-    //       characters: {},
-    //       title: '',
-    //       description: '',
-    //       link: '',
-    //       img: ''
-    //     })
-    //   })
+    handleSubmit(event){
+      event.preventDefault()
+    }
+
+    handleChange(event){
+      event.preventDefault()
     }
 
   render() {
@@ -38,11 +46,12 @@ class App extends Component {
     return (
       <div className="App">
        {isClicked ? 
-       <div>
-       <Create />  
-       <Header /> 
-       </div> :
-       <Card /> 
+       <Create handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>  
+      :
+      <div>
+        <Header /> 
+        <Card data={this.state.data}/> 
+       </div> 
        }
       </div>
     );
