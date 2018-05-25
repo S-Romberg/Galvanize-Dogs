@@ -13,10 +13,11 @@ class App extends Component {
     super(props)
     this.state = {
       data: [],
-      isClicked: false,
+      isClicked: true,
       dogName: '',
       comment: '',
-      image: ''
+      imgURL: '',
+      rating: 10
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -32,13 +33,52 @@ class App extends Component {
         })
       })
     }
+    
+    componentDidUpdate(){
+      fetch(dogURL)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            data: data,
+          })
+        })
+      }
 
     handleSubmit(event){
       event.preventDefault()
+      fetch(dogURL, {
+        method: "POST",
+        headers: new Headers({"content-type": "application/json"}),
+        body: JSON.stringify({
+          dogName: this.state.dogName,
+          comment: this.state.comment,
+          imgURL: this.state.imgURL,
+          rating: this.state.rating
+        })
+      })
+      .then(response => response.json())
+      .then(entry => {
+       console.log(entry)
+      })
+      .then(this.setState({
+        dogName: '',
+        comment: '',
+        imgURL: ''
+      }))
     }
 
     handleChange(event){
+      const value = event.target.value
+      const key = event.target.name
+      this.setState({
+        [key]: value
+      })
+    }
+
+    handleDelete(event){
       event.preventDefault()
+      alert("ARE YOU SURE ")
+
     }
 
   render() {
