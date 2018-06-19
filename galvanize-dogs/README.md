@@ -5,8 +5,10 @@ description. This app has full CRUD functionality so you can add, delete, and up
  
 ### Functionality
 Created by Hayley, Spencer, and David
+
 Created with React.js, JavaScript, Knex, PostgreSQL and Express
 ### Styling 
 Created by the wonderful Sandy and David
+
 Created with CSS and Semantic-UI
 
